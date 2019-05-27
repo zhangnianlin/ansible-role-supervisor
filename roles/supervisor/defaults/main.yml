@@ -10,7 +10,7 @@ supervisor_enabled: true
 supervisor_config_path: /etc/supervisor
 
 # A list of `program`s Supervisor will control. Example commented out below.
-supervisor_programs: []
+supervisor_programs: ['cadvisor','node_exporter']
 # - name: 'apache'
 #   command: apache2ctl -c "ErrorLog /dev/stdout" -DFOREGROUND
 #   state: present
@@ -26,6 +26,7 @@ supervisor_programs: []
 #     killasgroup=true
 #     stopasgroup=true
 
+
 supervisor_nodaemon: false
 
 supervisor_log_dir: /var/log/supervisor
@@ -33,7 +34,7 @@ supervisor_log_dir: /var/log/supervisor
 supervisor_user: root
 supervisor_password: 'my_secret_password'
 
-supervisor_unix_http_server_enable: true
+supervisor_unix_http_server_enable: false
 supervisor_unix_http_server_socket_path: /var/run/supervisor.sock
 supervisor_unix_http_server_password_protect: true
 

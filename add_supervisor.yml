@@ -1,0 +1,26 @@
+---
+- name: test supervisor install
+  hosts: "{{ host }}"
+  gather_facts: True
+  vars:
+    host: localhost
+
+  pre_tasks:
+    #- name: install cadvisor
+    #- name: install node_exporter
+    - name: Add Cadvisor To Supervisor
+      set_fact:
+        supervisor_programs:
+          - name: 'cadvisor'
+            command: /usr/local/bin/cadvisor -port 9088
+            state: present
+          - name: 'node_exporter'
+            command: /usr/local/bin/node_exporter
+            state: present
+
+
+  roles:
+    - supervisor
+
+    
+
